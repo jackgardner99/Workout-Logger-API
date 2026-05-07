@@ -1,0 +1,25 @@
+[project]
+name = "workout-logger-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Jack Gardner",email = "jtgardner99@gmail.com"}
+]
+requires-python = "^3.12"
+dependencies = [
+    "django (>=6.0.5,<7.0.0)",
+    "djangorestframework (>=3.17.1,<4.0.0)",
+    "django-cors-headers (>=4.9.0,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "autopep8 (>=2.3.2,<3.0.0)",
+    "pylint (>=4.0.5,<5.0.0)",
+    "pylint-django (>=2.7.0,<3.0.0)"
+]
