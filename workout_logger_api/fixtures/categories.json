@@ -1,0 +1,12 @@
+[
+  {
+    "model": "workout_logger_api.category",
+    "pk": 1,
+    "fields": { "name": "Strength" }
+  },
+  {
+    "model": "workout_logger_api.category",
+    "pk": 2,
+    "fields": { "name": "Cardio" }
+  }
+]

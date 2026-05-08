@@ -18,7 +18,7 @@ class MuscleGroup(models.Model):
 class Exercise(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="exercises")
     name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, max_length=3000)
     difficulty = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
