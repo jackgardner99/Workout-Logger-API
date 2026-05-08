@@ -1,0 +1,2 @@
+from workout_logger_api.models.intensity import Intensity
+from workout_logger_api.models.workout_log import WorkoutLog
