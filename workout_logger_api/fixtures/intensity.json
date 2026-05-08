@@ -1,0 +1,22 @@
+[
+  {
+    "model": "workout_logger_api.intensity",
+    "pk": 1,
+    "fields": { "name": "Low" }
+  },
+  {
+    "model": "workout_logger_api.intensity",
+    "pk": 2,
+    "fields": { "name": "Medium" }
+  },
+  {
+    "model": "workout_logger_api.intensity",
+    "pk": 3,
+    "fields": { "name": "High" }
+  },
+  {
+    "model": "workout_logger_api.intensity",
+    "pk": 4,
+    "fields": { "name": "Max" }
+  }
+]

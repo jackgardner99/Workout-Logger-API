@@ -1,0 +1,47 @@
+[
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 1,
+    "fields": { "name": "Chest" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 2,
+    "fields": { "name": "Back" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 3,
+    "fields": { "name": "Shoulders" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 4,
+    "fields": { "name": "Biceps" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 5,
+    "fields": { "name": "Triceps" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 6,
+    "fields": { "name": "Quads" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 7,
+    "fields": { "name": "Hamstrings" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 8,
+    "fields": { "name": "Calves" }
+  },
+  {
+    "model": "workout_logger_api.musclegroup",
+    "pk": 9,
+    "fields": { "name": "Core" }
+  }
+]
