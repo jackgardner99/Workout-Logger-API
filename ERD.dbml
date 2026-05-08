@@ -1,0 +1,70 @@
+Table User {	id int pk
+	username varchar
+	email varchar
+	password varchar
+	token varchar
+	created datetime
+}
+
+Table Category {
+	id int pk
+	name varchar
+}
+
+Table Muscle_Group {
+	id int pk
+	name varchar
+}
+
+Table Exercise {
+	id int pk
+	category_id int [ref: > Category.id]
+	name varchar
+	description varchar
+	difficulty varchar
+}
+
+Table Workout_Log {
+	id int pk
+	user_id int [ref: > User.id]
+  intensity_id int [ref: > Intensity.id]
+	title varchar
+	workout_date date
+	notes varchar
+	created_at datetime
+	updated_at datetime
+}
+
+Table Intensity {
+  id int pk
+  name varchar
+}
+
+Table Log_Exercise {
+	id int pk
+	log_id int [ref: > Workout_Log.id]
+	exercise_id int [ref: > Exercise.id]
+	sets int
+	reps int
+	weight_lbs float
+	notes varchar
+}
+
+Table Muscle_Exercise {
+	id int pk
+	exercise_id int [ref: > Exercise.id]
+	muscle_group_id int [ref: > Muscle_Group.id]
+}
+
+Table Likes {
+  id int pk
+  user_id int [ref: > User.id]
+  log_id int [ref: > Workout_Log.id]
+}
+
+Table Comment {
+  id int pk
+  user_id int [ref: > User.id]
+  log_id int [ref: > Workout_Log.id]
+  comment varchar
+}
