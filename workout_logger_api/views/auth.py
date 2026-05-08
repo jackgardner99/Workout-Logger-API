@@ -28,7 +28,7 @@ class RegisterView(APIView):
             )
 
         user = User.objects.create_user(username=username, email=email, password=password)
-        token, _ = Token.objects.get_or_create(user=user)
+        token = Token.objects.create(user=user)
         return Response(
             {"token": token.key, "user_id": user.id, "username": user.username},
             status=status.HTTP_201_CREATED,
