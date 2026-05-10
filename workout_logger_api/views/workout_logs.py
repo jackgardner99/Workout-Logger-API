@@ -46,7 +46,7 @@ class CommunityWorkoutLogListView(APIView):
 
 class WorkoutLogListCreateView(APIView):
     def get(self, request):
-        logs = WorkoutLog.objects.filter(user=request.user).select_related("intensity")
+        logs = WorkoutLog.objects.filter(user=request.user).select_related("intensity").order_by("-workout_date")
         return Response([serialize_log(log) for log in logs])
 
     @transaction.atomic
