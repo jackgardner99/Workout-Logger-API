@@ -1,0 +1,132 @@
+[
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "intensity": 3,
+      "title": "Morning Run",
+      "workout_date": "2026-04-01",
+      "notes": "Felt strong throughout. Good pace.",
+      "created_at": "2026-04-01T08:00:00Z",
+      "updated_at": "2026-04-01T08:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "intensity": 2,
+      "title": "Upper Body Strength",
+      "workout_date": "2026-04-02",
+      "notes": "Focused on bench press and rows.",
+      "created_at": "2026-04-02T09:00:00Z",
+      "updated_at": "2026-04-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "intensity": 1,
+      "title": "Recovery Walk",
+      "workout_date": "2026-04-03",
+      "notes": "Easy 30 minute walk to recover.",
+      "created_at": "2026-04-03T07:30:00Z",
+      "updated_at": "2026-04-03T07:30:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "intensity": 4,
+      "title": "Leg Day",
+      "workout_date": "2026-04-04",
+      "notes": "Squats, deadlifts, lunges. Very tough session.",
+      "created_at": "2026-04-04T10:00:00Z",
+      "updated_at": "2026-04-04T10:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "intensity": 2,
+      "title": "Core and Cardio",
+      "workout_date": "2026-04-07",
+      "notes": "20 minute HIIT followed by ab circuit.",
+      "created_at": "2026-04-07T07:00:00Z",
+      "updated_at": "2026-04-07T07:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "intensity": 3,
+      "title": "Pull Day",
+      "workout_date": "2026-04-08",
+      "notes": "Pull-ups, curls, cable rows.",
+      "created_at": "2026-04-08T08:30:00Z",
+      "updated_at": "2026-04-08T08:30:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 7,
+    "fields": {
+      "user": 3,
+      "intensity": 2,
+      "title": "Full Body Circuit",
+      "workout_date": "2026-04-09",
+      "notes": "Bodyweight circuit, 3 rounds.",
+      "created_at": "2026-04-09T09:00:00Z",
+      "updated_at": "2026-04-09T09:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 8,
+    "fields": {
+      "user": 4,
+      "intensity": 3,
+      "title": "Bike Ride",
+      "workout_date": "2026-04-10",
+      "notes": "45 minute outdoor ride, hilly route.",
+      "created_at": "2026-04-10T07:00:00Z",
+      "updated_at": "2026-04-10T07:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "intensity": 4,
+      "title": "Push Day",
+      "workout_date": "2026-04-11",
+      "notes": "Heavy bench, shoulder press, tricep dips.",
+      "created_at": "2026-04-11T08:00:00Z",
+      "updated_at": "2026-04-11T08:00:00Z"
+    }
+  },
+  {
+    "model": "workout_logger_api.workoutlog",
+    "pk": 10,
+    "fields": {
+      "user": 3,
+      "intensity": 1,
+      "title": "Yoga and Stretch",
+      "workout_date": "2026-04-12",
+      "notes": "30 minute yoga flow, focusing on flexibility.",
+      "created_at": "2026-04-12T08:00:00Z",
+      "updated_at": "2026-04-12T08:00:00Z"
+    }
+  }
+]
