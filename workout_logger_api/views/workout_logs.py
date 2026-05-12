@@ -99,13 +99,42 @@ class WorkoutLogDetailView(APIView):
     def get(self, request, pk):
         return Response(serialize_log(self.get_log(pk, request.user)))
 
-    def patch(self, request, pk):
+    @transaction.atomic
+    def put(self, request, pk):
         log = self.get_log(pk, request.user)
-        log.title = request.data.get("title", log.title)
-        log.workout_date = request.data.get("workout_date", log.workout_date)
-        log.intensity_id = request.data.get("intensity_id", log.intensity_id)
-        log.notes = request.data.get("notes", log.notes)
+        log.title = request.data.get("title")
+        log.workout_date = request.data.get("workout_date")
+        log.intensity_id = request.data.get("intensity_id")
+        log.notes = request.data.get("notes", "")
+
+        if not log.title or not log.workout_date:
+            return Response(
+                {"error": "title and workout_date are required"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         log.save()
+
+        exercises = request.data.get("exercises", [])
+        log.log_exercises.all().delete()
+        for ex in exercises:
+            exercise_id = ex.get("exercise_id")
+            sets = ex.get("sets")
+            reps = ex.get("reps")
+            weight_lbs = ex.get("weight_lbs")
+
+            if not all([exercise_id, sets is not None, reps is not None, weight_lbs is not None]):
+                raise ValueError("each exercise requires exercise_id, sets, reps, and weight_lbs")
+
+            LogExercise.objects.create(
+                log=log,
+                exercise_id=exercise_id,
+                sets=sets,
+                reps=reps,
+                weight_lbs=weight_lbs,
+                notes=ex.get("notes", ""),
+            )
+
         return Response(serialize_log(log))
 
     def delete(self, request, pk):
