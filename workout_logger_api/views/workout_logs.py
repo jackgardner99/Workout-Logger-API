@@ -95,7 +95,7 @@ class WorkoutLogListCreateView(APIView):
 
 class WorkoutLogDetailView(APIView):
     def get_log(self, pk, user):
-        return get_object_or_404(WorkoutLog, pk=pk, user=user)
+        return get_object_or_404(WorkoutLog.objects.select_related("intensity"), pk=pk, user=user)
 
     def get(self, request, pk):
         return Response(serialize_log(self.get_log(pk, request.user)))
