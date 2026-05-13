@@ -22,12 +22,13 @@ def serialize_log(log):
                 "id": le.id,
                 "exercise_id": le.exercise_id,
                 "exercise_name": le.exercise.name,
+                "category": {"id": le.exercise.category.id, "name": le.exercise.category.name} if le.exercise.category else None,
                 "sets": le.sets,
                 "reps": le.reps,
                 "weight_lbs": le.weight_lbs,
                 "notes": le.notes,
             }
-            for le in log.log_exercises.select_related("exercise")
+            for le in log.log_exercises.select_related("exercise__category")
         ],
     }
 
