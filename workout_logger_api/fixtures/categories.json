@@ -1,0 +1,27 @@
+[
+  {
+    "model": "workout_logger_api.category",
+    "pk": 1,
+    "fields": { "name": "Push" }
+  },
+  {
+    "model": "workout_logger_api.category",
+    "pk": 2,
+    "fields": { "name": "Pull" }
+  },
+  {
+    "model": "workout_logger_api.category",
+    "pk": 3,
+    "fields": { "name": "Legs" }
+  },
+  {
+    "model": "workout_logger_api.category",
+    "pk": 4,
+    "fields": { "name": "Cardio" }
+  },
+  {
+    "model": "workout_logger_api.category",
+    "pk": 5,
+    "fields": { "name": "Core" }
+  }
+]

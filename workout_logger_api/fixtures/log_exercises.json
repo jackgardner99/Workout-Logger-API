@@ -1,0 +1,206 @@
+[
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 1,
+    "fields": {
+      "log": 1,
+      "exercise": 4,
+      "sets": 1,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "30 minute steady-state run"
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 2,
+    "fields": {
+      "log": 2,
+      "exercise": 1,
+      "sets": 4,
+      "reps": 8,
+      "weight_lbs": 135.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 3,
+    "fields": {
+      "log": 2,
+      "exercise": 8,
+      "sets": 3,
+      "reps": 10,
+      "weight_lbs": 120.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 4,
+    "fields": {
+      "log": 3,
+      "exercise": 4,
+      "sets": 1,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "30 minute easy walk"
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 5,
+    "fields": {
+      "log": 4,
+      "exercise": 2,
+      "sets": 4,
+      "reps": 6,
+      "weight_lbs": 225.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 6,
+    "fields": {
+      "log": 4,
+      "exercise": 3,
+      "sets": 3,
+      "reps": 5,
+      "weight_lbs": 275.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 7,
+    "fields": {
+      "log": 4,
+      "exercise": 7,
+      "sets": 3,
+      "reps": 12,
+      "weight_lbs": 360.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 8,
+    "fields": {
+      "log": 5,
+      "exercise": 10,
+      "sets": 3,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "60 second holds"
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 9,
+    "fields": {
+      "log": 6,
+      "exercise": 6,
+      "sets": 4,
+      "reps": 8,
+      "weight_lbs": 0.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 10,
+    "fields": {
+      "log": 6,
+      "exercise": 9,
+      "sets": 3,
+      "reps": 12,
+      "weight_lbs": 35.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 11,
+    "fields": {
+      "log": 6,
+      "exercise": 8,
+      "sets": 3,
+      "reps": 10,
+      "weight_lbs": 110.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 12,
+    "fields": {
+      "log": 7,
+      "exercise": 2,
+      "sets": 3,
+      "reps": 15,
+      "weight_lbs": 95.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 13,
+    "fields": {
+      "log": 7,
+      "exercise": 10,
+      "sets": 3,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "45 second holds"
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 14,
+    "fields": {
+      "log": 8,
+      "exercise": 4,
+      "sets": 1,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "45 minute outdoor bike ride"
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 15,
+    "fields": {
+      "log": 9,
+      "exercise": 1,
+      "sets": 5,
+      "reps": 5,
+      "weight_lbs": 185.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 16,
+    "fields": {
+      "log": 9,
+      "exercise": 5,
+      "sets": 3,
+      "reps": 15,
+      "weight_lbs": 20.0,
+      "notes": ""
+    }
+  },
+  {
+    "model": "workout_logger_api.logexercise",
+    "pk": 17,
+    "fields": {
+      "log": 10,
+      "exercise": 10,
+      "sets": 2,
+      "reps": 1,
+      "weight_lbs": 0.0,
+      "notes": "60 second holds"
+    }
+  }
+]
