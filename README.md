@@ -8,7 +8,9 @@ A REST API for the Workout Logger application, built with Django and Django REST
 - **Django 6** — web framework
 - **Django REST Framework** — API layer
 - **django-cors-headers** — cross-origin request handling
-- **SQLite** — database (dev)
+- **PostgreSQL** — database (production via Railway)
+- **SQLite** — database fallback (local dev, no `DATABASE_URL` set)
+- **dj-database-url** — parses the `DATABASE_URL` environment variable
 - **Token Authentication** — DRF token auth
 
 ## Project Structure
@@ -34,6 +36,14 @@ workout_logger_api/
     ├── likes.py            # Like / unlike toggle
     └── comments.py         # Comment create + delete
 ```
+
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `DATABASE_URL` | Production only | Full Postgres connection string. Railway injects this automatically when you add a PostgreSQL plugin. If absent, the app falls back to a local SQLite file. |
+| `SECRET_KEY` | Production | Django secret key. Set this to a long random string in Railway; never commit the production value. |
+| `ALLOWED_HOSTS` | Production | Comma-separated list of allowed hostnames (e.g. your Railway domain). |
 
 ## Setup
 
