@@ -3,6 +3,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 1,
     "fields": {
+      "created_by": 1,
       "category": 1,
       "name": "Barbell Bench Press",
       "description": "The go-to exercise for building pectoral, shoulder, and triceps strength.",
@@ -13,6 +14,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 2,
     "fields": {
+      "created_by": 1,
       "category": 3,
       "name": "Barbell Squat",
       "description": "Considered the foundational, total-lower-body movement for developing quads, glutes, and hamstrings.",
@@ -23,6 +25,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 3,
     "fields": {
+      "created_by": 1,
       "category": 2,
       "name": "Deadlift",
       "description": "A premier compound lift that builds massive strength in the back, glutes, and hamstrings.",
@@ -33,6 +36,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 4,
     "fields": {
+      "created_by": 2,
       "category": 4,
       "name": "Treadmill Running/Walking",
       "description": "The most popular cardiovascular exercise for endurance, weight loss, and warm-ups.",
@@ -43,6 +47,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 5,
     "fields": {
+      "created_by": 2,
       "category": 1,
       "name": "Dumbbell Lateral Raise",
       "description": "A staple for targeting the side shoulders (deltoids) for upper body aesthetics.",
@@ -53,6 +58,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 6,
     "fields": {
+      "created_by": 2,
       "category": 2,
       "name": "Pull-ups/Lat Pulldowns",
       "description": "Essential exercises for strengthening the lats and building a wider back.",
@@ -63,6 +69,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 7,
     "fields": {
+      "created_by": 3,
       "category": 3,
       "name": "Leg Press",
       "description": "A popular machine exercise for targeting the legs (quads and glutes) while providing more back support than a squat.",
@@ -73,6 +80,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 8,
     "fields": {
+      "created_by": 3,
       "category": 2,
       "name": "Cable Row/Barbell Row",
       "description": "A standard movement for building back thickness and improving posture.",
@@ -83,6 +91,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 9,
     "fields": {
+      "created_by": 4,
       "category": 2,
       "name": "Dumbbell Bicep Curl",
       "description": "A common, effective isolation exercise for developing the bicep muscles.",
@@ -93,6 +102,7 @@
     "model": "workout_logger_api.exercise",
     "pk": 10,
     "fields": {
+      "created_by": 4,
       "category": 5,
       "name": "Plank",
       "description": "A staple core exercise used for improving abdominal strength, stability, and posture.",

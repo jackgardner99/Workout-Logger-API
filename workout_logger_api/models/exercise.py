@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -16,6 +17,7 @@ class MuscleGroup(models.Model):
 
 
 class Exercise(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="created_exercises")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="exercises")
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, max_length=3000)

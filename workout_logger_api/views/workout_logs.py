@@ -14,6 +14,7 @@ def serialize_log(log):
         "title": log.title,
         "workout_date": log.workout_date,
         "intensity": {"id": log.intensity.id, "name": log.intensity.name} if log.intensity else None,
+        "category": {"id": log.category.id, "name": log.category.name} if log.category else None,
         "notes": log.notes,
         "created_at": log.created_at,
         "updated_at": log.updated_at,
@@ -33,21 +34,43 @@ def serialize_log(log):
     }
 
 
-def serialize_log_community(log):
+def serialize_log_community(log, user):
     data = serialize_log(log)
     data["user"] = {"id": log.user_id, "username": log.user.username}
+    data["like_count"] = log.like_count
+    data["liked_by_me"] = any(like.user_id == user.id for like in log.likes.all())
+    data["comments"] = [
+        {
+            "id": c.id,
+            "user": {"id": c.user_id, "username": c.user.username},
+            "body": c.body,
+            "created_at": c.created_at,
+        }
+        for c in log.comments.all()
+    ]
     return data
 
 
 class CommunityWorkoutLogListView(APIView):
     def get(self, request):
-        logs = WorkoutLog.objects.select_related("intensity", "user").order_by("-workout_date")
-        return Response([serialize_log_community(log) for log in logs])
+        from django.db.models import Count, Prefetch
+        from workout_logger_api.models.workout_log_comment import WorkoutLogComment
+        logs = (
+            WorkoutLog.objects
+            .select_related("intensity", "category", "user")
+            .prefetch_related(
+                "likes",
+                Prefetch("comments", queryset=WorkoutLogComment.objects.select_related("user")),
+            )
+            .annotate(like_count=Count("likes"))
+            .order_by("-workout_date")
+        )
+        return Response([serialize_log_community(log, request.user) for log in logs])
 
 
 class WorkoutLogListCreateView(APIView):
     def get(self, request):
-        logs = WorkoutLog.objects.filter(user=request.user).select_related("intensity").order_by("-workout_date")
+        logs = WorkoutLog.objects.filter(user=request.user).select_related("intensity", "category").order_by("-workout_date")
         return Response([serialize_log(log) for log in logs])
 
     @transaction.atomic
@@ -55,6 +78,7 @@ class WorkoutLogListCreateView(APIView):
         title = request.data.get("title")
         workout_date = request.data.get("workout_date")
         intensity_id = request.data.get("intensity_id")
+        category_id = request.data.get("category_id") or None
         notes = request.data.get("notes", "")
         exercises = request.data.get("exercises", [])
 
@@ -69,6 +93,7 @@ class WorkoutLogListCreateView(APIView):
             title=title,
             workout_date=workout_date,
             intensity_id=intensity_id,
+            category_id=category_id,
             notes=notes,
         )
 
@@ -95,7 +120,7 @@ class WorkoutLogListCreateView(APIView):
 
 class WorkoutLogDetailView(APIView):
     def get_log(self, pk, user):
-        return get_object_or_404(WorkoutLog.objects.select_related("intensity"), pk=pk, user=user)
+        return get_object_or_404(WorkoutLog.objects.select_related("intensity", "category"), pk=pk, user=user)
 
     def get(self, request, pk):
         return Response(serialize_log(self.get_log(pk, request.user)))
@@ -106,6 +131,7 @@ class WorkoutLogDetailView(APIView):
         log.title = request.data.get("title")
         log.workout_date = request.data.get("workout_date")
         log.intensity_id = request.data.get("intensity_id")
+        log.category_id = request.data.get("category_id") or None
         log.notes = request.data.get("notes", "")
 
         if not log.title or not log.workout_date:
