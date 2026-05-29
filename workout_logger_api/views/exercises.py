@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -16,14 +17,31 @@ def serialize_exercise(ex):
             {"id": me.muscle_group.id, "name": me.muscle_group.name}
             for me in ex.muscle_exercises.all()
         ],
+        "created_by": {"username": ex.created_by.username} if ex.created_by else None,
     }
+
+
+def _fetch_exercise(pk):
+    return (
+        Exercise.objects
+        .select_related("category", "created_by")
+        .prefetch_related("muscle_exercises__muscle_group")
+        .get(pk=pk)
+    )
+
+
+def _sync_muscle_groups(exercise, muscle_group_ids):
+    exercise.muscle_exercises.all().delete()
+    for mg_id in muscle_group_ids:
+        if MuscleGroup.objects.filter(pk=mg_id).exists():
+            MuscleExercise.objects.create(exercise=exercise, muscle_group_id=mg_id)
 
 
 class ExerciseListView(APIView):
     def get(self, request):
         exercises = (
             Exercise.objects
-            .select_related("category")
+            .select_related("category", "created_by")
             .prefetch_related("muscle_exercises__muscle_group")
             .order_by("name")
         )
@@ -39,17 +57,34 @@ class ExerciseListView(APIView):
             description=request.data.get("description", "").strip(),
             difficulty=request.data.get("difficulty", "").strip(),
             category_id=request.data.get("category_id") or None,
+            created_by=request.user,
         )
 
-        muscle_group_ids = request.data.get("muscle_group_ids", [])
-        for mg_id in muscle_group_ids:
-            if MuscleGroup.objects.filter(pk=mg_id).exists():
-                MuscleExercise.objects.create(exercise=exercise, muscle_group_id=mg_id)
+        _sync_muscle_groups(exercise, request.data.get("muscle_group_ids", []))
 
-        exercise = (
-            Exercise.objects
-            .select_related("category")
-            .prefetch_related("muscle_exercises__muscle_group")
-            .get(pk=exercise.pk)
-        )
-        return Response(serialize_exercise(exercise), status=status.HTTP_201_CREATED)
+        return Response(serialize_exercise(_fetch_exercise(exercise.pk)), status=status.HTTP_201_CREATED)
+
+
+class ExerciseDetailView(APIView):
+    def _get_owned(self, pk, user):
+        return get_object_or_404(Exercise, pk=pk, created_by=user)
+
+    def put(self, request, pk):
+        exercise = self._get_owned(pk, request.user)
+        name = request.data.get("name", "").strip()
+        if not name:
+            return Response({"error": "name is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        exercise.name = name
+        exercise.description = request.data.get("description", "").strip()
+        exercise.difficulty = request.data.get("difficulty", "").strip()
+        exercise.category_id = request.data.get("category_id") or None
+        exercise.save()
+
+        _sync_muscle_groups(exercise, request.data.get("muscle_group_ids", []))
+
+        return Response(serialize_exercise(_fetch_exercise(exercise.pk)))
+
+    def delete(self, request, pk):
+        self._get_owned(pk, request.user).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
