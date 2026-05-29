@@ -2,7 +2,7 @@ from django.urls import path
 
 from workout_logger_api.views.auth import LoginView, LogoutView, RegisterView
 from workout_logger_api.views.categories import CategoryListView
-from workout_logger_api.views.exercises import ExerciseListView
+from workout_logger_api.views.exercises import ExerciseDetailView, ExerciseListView
 from workout_logger_api.views.muscle_groups import MuscleGroupListView
 from workout_logger_api.views.intensity import IntensityListView
 from workout_logger_api.views.comments import WorkoutLogCommentDetailView, WorkoutLogCommentListCreateView
@@ -15,6 +15,7 @@ urlpatterns = [
     path("auth/logout/", LogoutView.as_view(), name="logout"),
     path("categories/", CategoryListView.as_view(), name="categories"),
     path("exercises/", ExerciseListView.as_view(), name="exercises"),
+    path("exercises/<int:pk>/", ExerciseDetailView.as_view(), name="exercise-detail"),
     path("muscle-groups/", MuscleGroupListView.as_view(), name="muscle-groups"),
     path("intensity/", IntensityListView.as_view(), name="intensity"),
     path("logs/", WorkoutLogListCreateView.as_view(), name="workout-logs"),
