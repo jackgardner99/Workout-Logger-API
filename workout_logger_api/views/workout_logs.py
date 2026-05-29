@@ -34,16 +34,25 @@ def serialize_log(log):
     }
 
 
-def serialize_log_community(log):
+def serialize_log_community(log, user):
     data = serialize_log(log)
     data["user"] = {"id": log.user_id, "username": log.user.username}
+    data["like_count"] = log.like_count
+    data["liked_by_me"] = any(like.user_id == user.id for like in log.likes.all())
     return data
 
 
 class CommunityWorkoutLogListView(APIView):
     def get(self, request):
-        logs = WorkoutLog.objects.select_related("intensity", "category", "user").order_by("-workout_date")
-        return Response([serialize_log_community(log) for log in logs])
+        from django.db.models import Count
+        logs = (
+            WorkoutLog.objects
+            .select_related("intensity", "category", "user")
+            .prefetch_related("likes")
+            .annotate(like_count=Count("likes"))
+            .order_by("-workout_date")
+        )
+        return Response([serialize_log_community(log, request.user) for log in logs])
 
 
 class WorkoutLogListCreateView(APIView):

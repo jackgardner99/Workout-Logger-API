@@ -4,6 +4,7 @@ from workout_logger_api.views.auth import LoginView, LogoutView, RegisterView
 from workout_logger_api.views.categories import CategoryListView
 from workout_logger_api.views.exercises import ExerciseListView
 from workout_logger_api.views.intensity import IntensityListView
+from workout_logger_api.views.likes import WorkoutLogLikeView
 from workout_logger_api.views.workout_logs import CommunityWorkoutLogListView, WorkoutLogDetailView, WorkoutLogListCreateView
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path("logs/", WorkoutLogListCreateView.as_view(), name="workout-logs"),
     path("logs/community/", CommunityWorkoutLogListView.as_view(), name="community-workout-logs"),
     path("logs/<int:pk>/", WorkoutLogDetailView.as_view(), name="workout-log-detail"),
+    path("logs/<int:pk>/like/", WorkoutLogLikeView.as_view(), name="workout-log-like"),
 ]
